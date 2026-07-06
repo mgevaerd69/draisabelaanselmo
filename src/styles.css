@@ -1,0 +1,226 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Isabela Anselmo — Quiet Luxury Design System
+ * Tuned for WCAG 2.2 AAA contrast on a warm cream background.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-sand: var(--sand);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px oklch(0.30 0.03 60 / 0.04), 0 8px 24px oklch(0.30 0.03 60 / 0.06);
+  --shadow-elegant: 0 1px 1px oklch(0.30 0.03 60 / 0.04), 0 24px 60px -20px oklch(0.30 0.03 60 / 0.18);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette — AAA tuned
+     Foreground/muted darkened to clear 7:1 over the cream background. */
+  --background: #F8F3ED;
+  --cream: #F0E1C8;
+  --sand: #D2BA94;
+
+  /* ≥ 7:1 on #F8F3ED */
+  --foreground: #3D2A14;
+
+  --card: #F8F3ED;
+  --card-foreground: #3D2A14;
+  --popover: #F8F3ED;
+  --popover-foreground: #3D2A14;
+
+  --primary: #3D2A14;
+  --primary-foreground: #F8F3ED;
+
+  --secondary: #F0E1C8;
+  --secondary-foreground: #3D2A14;
+
+  --muted: #F0E1C8;
+  /* ≥ 7:1 on #F8F3ED for body copy */
+  --muted-foreground: #5A4324;
+
+  --accent: #D2BA94;
+  --accent-foreground: #3D2A14;
+
+  /* Decorative only — never use for text */
+  --gold: #B8945F;
+  --gold-foreground: #3D2A14;
+
+  --destructive: oklch(0.45 0.20 25);
+  --destructive-foreground: #F8F3ED;
+
+  --border: #C9B28F;
+  --input: #C9B28F;
+  --ring: #3D2A14;
+
+  --chart-1: oklch(0.75 0.075 78);
+  --chart-2: oklch(0.55 0.04 55);
+  --chart-3: oklch(0.85 0.02 78);
+  --chart-4: oklch(0.40 0.03 50);
+  --chart-5: oklch(0.92 0.022 78);
+
+  --sidebar: oklch(0.985 0.005 80);
+  --sidebar-foreground: oklch(0.28 0.025 50);
+  --sidebar-primary: oklch(0.36 0.028 50);
+  --sidebar-primary-foreground: oklch(0.985 0.005 80);
+  --sidebar-accent: oklch(0.94 0.012 78);
+  --sidebar-accent-foreground: oklch(0.32 0.026 50);
+  --sidebar-border: oklch(0.88 0.014 78);
+  --sidebar-ring: oklch(0.72 0.05 78);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Anchor offsets so the fixed header doesn't cover targets */
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Universal visible focus — WCAG 2.4.7 + 2.4.11 (AAA) */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* Refined motion */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-slow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer-line {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@utility animate-fade-in-slow {
+  animation: fade-in-slow 1.6s ease-out both;
+}
+@utility animate-shimmer-line {
+  animation: shimmer-line 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility font-serif {
+  font-family: var(--font-serif);
+}
+@utility font-sans {
+  font-family: var(--font-sans);
+}
+
+/* 0.75rem = 12px — minimum we use for short uppercase labels */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility gold-rule {
+  display: inline-block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+/* Minimum 44x44 tap target — WCAG 2.5.5 (AAA) */
+@utility tap-44 {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+/* Skip link — visible only on keyboard focus */
+@utility skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  transition: transform 200ms ease;
+}
+@utility skip-link-visible {
+  transform: translateY(0);
+}
+
+/* Respect reduced motion globally — WCAG 2.3.3 (AAA) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
