@@ -105,6 +105,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="pt-BR">
       <head>
         <HeadContent />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y54S3BL0F"></script>
+        <script
+          dangerouslySetInnerHTML={{ __html: "window.dataLayer = window.dataLayer || [];\r\n  function gtag(){dataLayer.push(arguments);}\r\n  gtag('js', new Date());\r\n\r\n  gtag('config', 'G-7Y54S3BL0F');" }}
+        />
       </head>
       <body>
         <a href="#conteudo" className="skip-link focus:skip-link-visible">
