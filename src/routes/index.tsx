@@ -224,8 +224,7 @@ function Hero() {
             className="mt-6 md:mt-8 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-foreground animate-fade-up"
           >
             Realce a sua<br />
-            <span className="italic text-primary">beleza</span> da<br />
-            natural.
+            <span className="italic text-primary">beleza</span> natural.<br />
           </h1>
           <p
             className="mt-6 md:mt-8 max-w-md text-base md:text-lg leading-relaxed text-muted-foreground animate-fade-up"
