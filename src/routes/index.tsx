@@ -223,7 +223,7 @@ function Hero() {
             id="hero-title"
             className="mt-6 md:mt-8 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-foreground animate-fade-up"
           >
-            O cuidado da<br />
+            Realce a<br />
             sua beleza natural.
           </h1>
           <p
